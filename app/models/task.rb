@@ -1,14 +1,14 @@
 class Task
-	attr_accessor :complete
+	attr_accessor :completed
 
 	def initialize
-		@complete = false
+		@completed = false
 	end
 
 	def complete?
-		complete
+		completed
 	end
 	def mark_completed
-		@complete = true
+		@completed = true
 	end	
 end
