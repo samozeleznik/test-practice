@@ -26,7 +26,7 @@ class Project
   end
   
   def current_rate
-    completed_velocity * 1.0 /21
+    completed_velocity * 1.0 / 21
   end
 
   def projected_days_remaining
@@ -34,6 +34,7 @@ class Project
   end
 
   def on_schedule?
+    return false if projected_days_remaining.nan?
     (Date.today + projected_days_remaining) <= due_date
   end
 end
