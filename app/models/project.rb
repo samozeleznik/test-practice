@@ -6,7 +6,7 @@ class Project
 	end
 
 	def incomplete_tasks 
-		tasks.reject(&:completed)
+		tasks.reject(&:completed_at)
 	end
 
 	def done?
