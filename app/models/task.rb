@@ -9,6 +9,7 @@ class Task
 	def complete?
 		completed
 	end
+
 	def mark_completed
 		@completed = true
 	end	

@@ -4,9 +4,9 @@ class Project
 	def initialize
 		@tasks = []
 	end
-	
-	def inclopmete_tasks
-		tasks.reject(&:complete)
+
+	def incomplete_tasks 
+		tasks.reject(&:completed)
 	end
 
 	def done?
