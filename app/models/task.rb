@@ -1,11 +1,6 @@
-class Task
-	attr_accessor :size, :completed_at
+class Task < ActiveRecord::Base
 
-	def initialize(options = {})
-		mark_completed(options[:completed_at]) if options[:completed_at]
-		@size = options[:size]
-	end
-
+	belongs_to :project
 	def complete?
 		completed_at.present?
 	end
