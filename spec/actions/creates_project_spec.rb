@@ -12,33 +12,33 @@ describe CreatesProject do
 		let(:creator) { CreatesProject.new(name: "Test", task_string: task_string }
 		let(:tasks) { creator.convert_string_to_tasks }
 
-		it "handles an empty string" do
+		describe "with an empty string" do
 			let(:task_string) { "" }
 			expect(tasks.size).to eq(0)		
 		end
 		
-		it "handles a single string" do
+		describe "with a single string" do
 			let(:task_string) { "Start things" }
 			expect(tasks.size).to eq(1)
 			expect(tasks.map(&:title)).to eq("Start things")
 			expect(tasks.map(&:size)).to eq(1)
 		end
 
-		it "handles a string with size" do
+		describe "with a single string and a size" do
 			let(:task_string) { "Start things:3" }
 			expect(tasks.size).to eq(1)
 			expect(tasks.map(&:title)).to eq("Start things")
 			expect(tasks.map(&:size)).to eq(3)
 		end
 
-		it "handles multiple strings" do
+		describe "with multiple tasks" do
 			let(:task_string) { "Start things:3\nEnd things:2" }
 			expect(tasks.size).to eq(2)
 			expect(tasks.map(&:title)).to eq(["Start things", "End things"])
 			expect(tasks.map(&:size)).to eq([3, 2])
 		end
 	
-		it "attaches tasks to the project" do
+		describe "attaching tasks to the project" do
 			let(:task_string) { "Start things:3\nEnd things:2" }
 			it "saves  the project and tasks " do
 				creator.create
