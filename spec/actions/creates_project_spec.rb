@@ -14,36 +14,36 @@ describe CreatesProject do
 
 		describe "with an empty string" do
 			let(:task_string) { "" }
-			expect(tasks.size).to eq(0)		
+			specify { expect(tasks.size).to eq(0) }
 		end
 		
 		describe "with a single string" do
 			let(:task_string) { "Start things" }
-			expect(tasks.size).to eq(1)
-			expect(tasks.map(&:title)).to eq("Start things")
-			expect(tasks.map(&:size)).to eq(1)
+			specify { expect(tasks.size).to eq(1) }
+			specify { expect(tasks.map(&:title)).to eq("Start things") }
+			specify { expect(tasks.map(&:size)).to eq(1) }
 		end
 
 		describe "with a single string and a size" do
 			let(:task_string) { "Start things:3" }
-			expect(tasks.size).to eq(1)
-			expect(tasks.map(&:title)).to eq("Start things")
-			expect(tasks.map(&:size)).to eq(3)
+			specify { expect(tasks.size).to eq(1) }
+			specify { expect(tasks.map(&:title)).to eq("Start things") }
+			specify { expect(tasks.map(&:size)).to eq(3) }
 		end
 
 		describe "with multiple tasks" do
 			let(:task_string) { "Start things:3\nEnd things:2" }
-			expect(tasks.size).to eq(2)
-			expect(tasks.map(&:title)).to eq(["Start things", "End things"])
-			expect(tasks.map(&:size)).to eq([3, 2])
+			specify { expect(tasks.size).to eq(2) }
+			specify { expect(tasks.map(&:title)).to eq(["Start things", "End things"]) }
+			specify { expect(tasks.map(&:size)).to eq([3, 2]) }
 		end
 	
 		describe "attaching tasks to the project" do
 			let(:task_string) { "Start things:3\nEnd things:2" }
 			it "saves  the project and tasks " do
 				creator.create
-				expects(creator.project.tasks.size).to eq(2)
-				expects(creator.project).not_to be_a_new_record
+				specify { expects(creator.project.tasks.size).to eq(2) }
+				specify { expects(creator.project).not_to be_a_new_record }
 			end
 		end
 	end
